@@ -37,7 +37,7 @@ jobs:
             echo "No linked issue found in commit messages."
           fi
 
-      - name: Move issues to Done
+      - name: Update GitHub Project status
         if: steps.issue.outputs.numbers != ''
         env:
           GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
