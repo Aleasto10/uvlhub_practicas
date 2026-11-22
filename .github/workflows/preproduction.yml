@@ -21,10 +21,7 @@ jobs:
         env:
           BEFORE: ${{ github.event.before }}
         run: |
-          if [[ "$BEFORE" =~ ^0+$ ]]; then
-            echo "Initial push. No previous commits."
-            exit 0
-          fi
+          
 
           MESSAGES=$(git log "$BEFORE..${GITHUB_SHA}" --format=%B)
 
