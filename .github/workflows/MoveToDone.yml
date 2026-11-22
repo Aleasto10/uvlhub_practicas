@@ -37,14 +37,14 @@ jobs:
           fi
 
       - name: Move issues to Done
-        if: steps.issues.outputs.numbers != ''
+        if: steps.issue.outputs.numbers != ''
         env:
           GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
           PROJECT_ID: ${{ vars.PROJECT_ID }}
           STATUS_FIELD_ID: ${{ vars.STATUS_FIELD_ID }}
           DONE_OPTION_ID: ${{ vars.DONE_OPTION_ID }}
           REPOSITORY: ${{ github.repository }}
-          ISSUE_NUMBERS: ${{ steps.issues.outputs.numbers }}
+          ISSUE_NUMBERS: ${{ steps.issue.outputs.numbers }}
         run: |
           OWNER="${REPOSITORY%%/*}"
           REPO="${REPOSITORY##*/}"
@@ -108,4 +108,3 @@ jobs:
               -f optionId="$DONE_OPTION_ID"
 
             echo "Issue #$NUMBER moved to Done"
-          done
