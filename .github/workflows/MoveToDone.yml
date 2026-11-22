@@ -38,14 +38,14 @@ jobs:
           fi
 
       - name: Update GitHub Project status
-        if: steps.issue.outputs.numbers != ''
+        if: steps.issue.outputs.number != ''
         env:
           GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
           PROJECT_ID: ${{ vars.PROJECT_ID }}
           STATUS_FIELD_ID: ${{ vars.STATUS_FIELD_ID }}
           DONE_FIELD_ID: ${{ vars.DONE_FIELD_ID }}
           REPOSITORY: ${{ github.repository }}
-          ISSUE_NUMBERS: ${{ steps.issue.outputs.numbers }}
+          ISSUE_NUMBERS: ${{ steps.issue.outputs.number }}
         run: |
           OWNER="${REPOSITORY%%/*}"
           REPO="${REPOSITORY##*/}"
