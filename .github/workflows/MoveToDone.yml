@@ -45,7 +45,7 @@ jobs:
           STATUS_FIELD_ID: ${{ vars.STATUS_FIELD_ID }}
           DONE_FIELD_ID: ${{ vars.DONE_FIELD_ID }}
           REPOSITORY: ${{ github.repository }}
-          ISSUE_NUMBERS: ${{ steps.issue.outputs.number }}
+          ISSUE_NUMBER: ${{ steps.issue.outputs.number }}
         run: |
           OWNER="${REPOSITORY%%/*}"
           REPO="${REPOSITORY##*/}"
